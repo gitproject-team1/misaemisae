@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
 import "./App.scss";
@@ -12,12 +12,20 @@ function App() {
     placeArr = JSON.parse(defaultPlace);
   }
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (placeArr[1].length !== 0) {
+      navigate("/main");
+    }
+  }, []);
+
   return (
     // 회의필요...
     <>
       <Routes>
         {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
-        <Route path="/" index element={<Main />} />
+        <Route path="/main" index element={<Main />} />
       </Routes>
     </>
   );
