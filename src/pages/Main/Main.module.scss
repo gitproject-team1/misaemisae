@@ -1,15 +1,38 @@
-.container {
+.box {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 2rem;
-  color: #fff;
-}
-.header {
-  font-size: 1.875rem;
-  margin-bottom: 1rem;
-}
-.time {
-  font-size: 1.5rem;
+  .header {
+    color: #fff;
+    font-size: 1.875rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .time {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 1.5rem;
+  }
+  section {
+    .station {
+      color: #000;
+      font-size: 2.5rem;
+      padding-top: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    h4 {
+      color: #9dadb6;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    h5 {
+      color: #1e64ee;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
 }
