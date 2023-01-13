@@ -1,15 +1,15 @@
 @import "../../variables";
 .item {
-  cursor: pointer;
   display: flex;
   width: 10rem;
   height: 4rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
   background-color: $color-select;
   border-radius: 10px;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  margin-right: 1rem;
   i {
     text-align: center;
     font-size: 1rem;
