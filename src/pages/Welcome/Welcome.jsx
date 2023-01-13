@@ -70,12 +70,7 @@ const Welcome = () => {
           <Select selectStation={selectStation} stations={station} />
         )}
       </div>
-      <Link
-        to="/"
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
+      <Link to="/main">
         <Button>검색</Button>
       </Link>
       {loadStatus && <Load />}
