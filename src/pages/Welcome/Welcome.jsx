@@ -3,20 +3,27 @@ import styles from "./Welcome.module.scss";
 import Select from "../../components/UI/Select";
 import Button from "../../components/UI/Button";
 import getInfo from "../../api/requests";
+import Load from "../../components/UI/Load";
 
 const Welcome = () => {
   // 최종 검색정보는 sido와 selectedStation에 들어있음.
   const [sido, setSido] = useState("");
   const [station, setStation] = useState([]);
   const [selectedStation, setSelectedStation] = useState("");
+  const [loadStatus, setLoadstatus] = useState(false);
 
   const getSidoInfo = async () => {
     if (sido && sido !== "지역") {
+      setLoadstatus(true);
       const res = await getInfo(sido);
       const stations = res.response.body.items.map((item) => {
         return item.stationName;
       });
-      setStation(stations);
+
+      setTimeout(() => {
+        setLoadstatus(false);
+        setStation(stations);
+      }, 1000);
     } else {
       setStation([]);
     }
@@ -55,6 +62,7 @@ const Welcome = () => {
         )}
       </div>
       <Button>검색</Button>
+      {loadStatus && <Load />}
     </div>
   );
 };
