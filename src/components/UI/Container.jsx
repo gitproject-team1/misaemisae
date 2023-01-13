@@ -3,9 +3,9 @@ import styles from "./Container.module.scss";
 import styled from "styled-components";
 
 // props= {children, width, a, b,c }
-const Container = ({ children, width }) => {
+const Container = ({ children, width, align }) => {
   return (
-    <section className={styles.container} style={{ width: width }}>
+    <section className={styles.container} style={{ width: width, textAlign: align }}>
       {children}
     </section>
   );
