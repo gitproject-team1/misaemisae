@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
+import Nav from "./components/Layout/Nav";
 import "./App.scss";
 
 function App() {
@@ -25,7 +26,9 @@ function App() {
     <>
       <Routes>
         {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
-        <Route path="/main" index element={<Main />} />
+        <Route element={<Nav />}>
+          <Route path="/main" index element={<Main />} />
+        </Route>
       </Routes>
     </>
   );
