@@ -13,10 +13,11 @@ function App() {
   }
 
   return (
+    // 회의필요...
     <>
       <Routes>
-        {placeArr[0].length === 0 && <Route index element={<Welcome />} />}
-        <Route path="/" element={<Main />} />
+        {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
+        <Route path="/" index element={<Main />} />
       </Routes>
     </>
   );

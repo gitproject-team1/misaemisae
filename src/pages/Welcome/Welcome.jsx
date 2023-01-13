@@ -4,6 +4,7 @@ import Select from "../../components/UI/Select";
 import Button from "../../components/UI/Button";
 import getInfo from "../../api/requests";
 import Load from "../../components/UI/Load";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   // 최종 검색정보는 sido와 selectedStation에 들어있음.
@@ -19,9 +20,9 @@ const Welcome = () => {
       const stations = res.response.body.items.map((item) => {
         return item.stationName;
       });
-
       setTimeout(() => {
         setLoadstatus(false);
+        console.log(1);
         setStation(stations);
       }, 1000);
     } else {
@@ -33,14 +34,22 @@ const Welcome = () => {
     getSidoInfo();
   }, [sido]);
 
-  // 로컬스토리지에 저장
   useEffect(() => {
-    let placeArr = JSON.stringify([sido, selectedStation]);
-    localStorage.setItem("defaultPlace", placeArr);
-  }, [selectedStation]);
+    if (selectedStation === "") {
+      let placeArr = JSON.stringify([sido, station[0]]);
+      localStorage.setItem("defaultPlace", placeArr);
+    } else {
+      let placeArr = JSON.stringify([sido, selectedStation]);
+      localStorage.setItem("defaultPlace", placeArr);
+    }
+  }, [sido, station, selectedStation]);
+
+  // 로컬스토리지에 저장
+  // useEffect(() => {}, [selectedStation]);
 
   const selectSido = (input) => {
     setSido(input);
+    setSelectedStation("");
   };
 
   const selectStation = (input) => {
@@ -61,7 +70,14 @@ const Welcome = () => {
           <Select selectStation={selectStation} stations={station} />
         )}
       </div>
-      <Button>검색</Button>
+      <Link
+        to="/"
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <Button>검색</Button>
+      </Link>
       {loadStatus && <Load />}
     </div>
   );
