@@ -1,13 +1,15 @@
 @import "../../variables.scss";
 
 .select {
-  width: 3.5rem;
+  min-width: 3.5rem;
+  width: auto;
   height: 2.5rem;
   border: none;
   text-align: center;
   appearance: none;
   border-radius: 15px;
   outline: none;
+  cursor: pointer;
   font-weight: 600;
   background-color: $color-select;
   option {

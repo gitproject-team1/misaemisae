@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Select.module.scss";
 
-const Select = (props) => {
-  const sidoName = [
+const Select = ({ selectSido, selectStation, stations }) => {
+  let sidoName = [
+    "지역",
     "서울",
     "부산",
     "대구",
@@ -22,10 +23,24 @@ const Select = (props) => {
     "세종",
   ];
 
+  if (stations.length > 0) {
+    sidoName = stations;
+  }
+
+  const handleSido = (event) => {
+    if (stations.length > 0) {
+      selectStation(event.target.value);
+    } else {
+      selectSido(event.target.value);
+    }
+  };
+
   return (
-    <select className={styles.select}>
+    <select name="sido" className={styles.select} onChange={handleSido}>
       {sidoName.map((sido) => (
-        <option value={sido}>{sido}</option>
+        <option value={sido} key={sido}>
+          {sido}
+        </option>
       ))}
     </select>
   );
