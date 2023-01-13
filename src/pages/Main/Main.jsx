@@ -5,7 +5,9 @@ import styles from "./Main.module.scss";
 import Load from "../../components/UI/Load";
 
 const Main = () => {
-  const [defaultPlace, setDefaultPlace] = useState(JSON.parse(localStorage.getItem("defaultPlace")));
+  const [defaultPlace, setDefaultPlace] = useState(
+    JSON.parse(localStorage.getItem("defaultPlace"))
+  );
   const [sido, setSido] = useState(defaultPlace[0]);
   const [station, setStation] = useState(defaultPlace[1]);
   const [data, setData] = useState("");
@@ -44,9 +46,11 @@ const Main = () => {
 
   return (
     <div className={styles.box}>
-      <h1 className={styles.header}>{defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다</h1>
+      <h1 className={styles.header}>
+        {defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다
+      </h1>
       <h2 className={styles.time}>{time} 기준</h2>
-      <Container width="30%" align="center">
+      <Container width="45%" align="center">
         <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
@@ -66,7 +70,9 @@ const Main = () => {
             color: color,
           }}
         >
-          {pmgrade ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1] : "측정중"}
+          {pmgrade
+            ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1]
+            : "측정중"}
         </h5>
         <div>
           <div>미세먼지</div>
