@@ -26,6 +26,12 @@ const Welcome = () => {
     getSidoInfo();
   }, [sido]);
 
+  // 로컬스토리지에 저장
+  useEffect(() => {
+    let placeArr = JSON.stringify([sido, selectedStation]);
+    localStorage.setItem("defaultPlace", placeArr);
+  }, [selectedStation]);
+
   const selectSido = (input) => {
     setSido(input);
   };
