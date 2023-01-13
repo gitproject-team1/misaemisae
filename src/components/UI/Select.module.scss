@@ -1,0 +1,16 @@
+@import "../../variables.scss";
+
+.select {
+  width: 3.5rem;
+  height: 2.5rem;
+  text-align: center;
+  appearance: none;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  background-color: $color-select;
+  option {
+    font-size: 0.7rem;
+  }
+}
