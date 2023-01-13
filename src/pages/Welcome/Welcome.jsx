@@ -66,9 +66,7 @@ const Welcome = () => {
       <span>기본지역으로 설정됩니다.</span>
       <div className={styles.selectBox}>
         <Select selectSido={selectSido} stations={[]} />
-        {station.length !== 0 && (
-          <Select selectStation={selectStation} stations={station} />
-        )}
+        {station.length !== 0 && <Select selectStation={selectStation} stations={station} />}
       </div>
       <Link
         to="/"

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_KEY =
-  "gAOumWPhcv1%2BiAh0lcnMkvtyBP%2F%2F9JfrwJVD3yjM%2FEjH%2FykPdLtFIArXDK99QKBVDs9zj9iqFvnTLZKX89xmPg%3D%3D";
+const API_KEY = "gAOumWPhcv1%2BiAh0lcnMkvtyBP%2F%2F9JfrwJVD3yjM%2FEjH%2FykPdLtFIArXDK99QKBVDs9zj9iqFvnTLZKX89xmPg%3D%3D";
 
 export default async function getInfo(sido) {
   try {
