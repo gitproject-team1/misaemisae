@@ -50,7 +50,7 @@ const Main = () => {
         {defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다
       </h1>
       <h2 className={styles.time}>{time} 기준</h2>
-      <Container width="60%" align="center">
+      <Container width="40%" align="center">
         <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <h5
