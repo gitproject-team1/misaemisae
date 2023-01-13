@@ -24,17 +24,25 @@
       font-size: 2rem;
       padding-top: 1.5rem;
       font-weight: 600;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
     }
     h4 {
       color: #9dadb6;
       font-size: 1.2rem;
       margin-bottom: 0.8rem;
     }
+    .expression {
+      margin-top: 2rem;
+      margin-bottom: 2.5rem;
+      i {
+        font-size: 16rem;
+      }
+    }
     h5 {
       color: #666666;
       font-size: 1.8rem;
       font-weight: 700;
+      margin-bottom: 1.5rem;
     }
   }
 }
