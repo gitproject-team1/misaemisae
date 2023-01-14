@@ -9,7 +9,6 @@ const Main = () => {
   const [sido, setSido] = useState(defaultPlace[0]);
   const [station, setStation] = useState(defaultPlace[1]);
   const [data, setData] = useState("");
-  const [time, setTime] = useState("");
   const [pmgrade, setPmgrade] = useState("");
   const [color, setColor] = useState("#666666");
   const [loadStatus, setLoadStatus] = useState(false);
@@ -18,15 +17,11 @@ const Main = () => {
     setLoadStatus(true);
     const res = await getInfo(sido);
     setTimeout(() => {
-      setData(res);
-      const item = res.response.body.items.find((data) => {
-        return data.sidoName === sido;
-      });
-      const item2 = res.response.body.items.find((data) => {
+      const result = res.response.body.items.find((data) => {
         return data.stationName === station;
       });
-      setTime(item.dataTime);
-      setPmgrade(item2.pm10Grade);
+      setData(result);
+      setPmgrade(result.pm10Grade);
       setLoadStatus(false);
     }, 1000);
   };
@@ -45,7 +40,7 @@ const Main = () => {
   return (
     <div className={styles.box}>
       <h1 className={styles.header}>{defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다</h1>
-      <h2 className={styles.time}>{time} 기준</h2>
+      <h2 className={styles.time}>{data.dataTime} 기준</h2>
       <Container width="30%" align="center">
         <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
@@ -68,25 +63,24 @@ const Main = () => {
         >
           {pmgrade ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1] : "측정중"}
         </h5>
-        <div>
-          <div>미세먼지</div>
-          <div></div>
-          <div></div>
-        </div>
+        <Dusts pm="미세먼지" value={data.pm10Value}></Dusts>
+        <Dusts pm="초미세먼지" value={data.pm25Value}></Dusts>
       </Container>
       {loadStatus && <Load />}
     </div>
   );
 };
 
-// const Dusts = () => {
-//   return (
-//     <div>
-//       <div></div>
-//       <div></div>
-//       <div></div>
-//     </div>
-//   );
-// };
+const Dusts = ({ pm, value }) => {
+  return (
+    <div class={styles.dust}>
+      <div>{pm}</div>
+      <div>{value}</div>
+      <div class="progress-bar">
+        <span style={{ width: `${value}%`, maxWidth: `${value}%` }}></span>
+      </div>
+    </div>
+  );
+};
 
 export default Main;
