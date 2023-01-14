@@ -12,6 +12,7 @@ const Main = () => {
   const [pmgrade, setPmgrade] = useState("");
   const [color, setColor] = useState("#666666");
   const [loadStatus, setLoadStatus] = useState(false);
+  const [likeImage, setlikeImage] = useState(false);
 
   const fetchData = async () => {
     setLoadStatus(true);
@@ -42,18 +43,27 @@ const Main = () => {
       <h1 className={styles.header}>{defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다</h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
       <Container width="30%" align="center">
-        <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
+        <h3 className={styles.station}>
+          {defaultPlace.join(" ")}
+          <div
+            onClick={() => {
+              setlikeImage(!likeImage);
+            }}
+          >
+            {likeImage ? <i className="fa-solid fa-heart" style={{ color: "red" }}></i> : <i className="fa-regular fa-heart"></i>}
+          </div>
+        </h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
           {pmgrade ? (
             [
-              <i class="fa-regular fa-face-smile"></i>,
-              <i class="fa-regular fa-face-meh"></i>,
-              <i class="fa-regular fa-face-frown"></i>,
-              <i class="fa-regular fa-face-dizzy"></i>,
+              <i className="fa-regular fa-face-smile"></i>,
+              <i className="fa-regular fa-face-meh"></i>,
+              <i className="fa-regular fa-face-frown"></i>,
+              <i className="fa-regular fa-face-dizzy"></i>,
             ][pmgrade - 1]
           ) : (
-            <i class="fa-regular fa-face-meh-blank"></i>
+            <i className="fa-regular fa-face-meh-blank"></i>
           )}
         </div>
         <h5
@@ -73,10 +83,10 @@ const Main = () => {
 
 const Dusts = ({ pm, value }) => {
   return (
-    <div class={styles.dust}>
+    <div className={styles.dust}>
       <div>{pm}</div>
       <div>{value}</div>
-      <div class="progress-bar">
+      <div className="progress-bar">
         <span style={{ width: `${value}%`, maxWidth: `${value}%` }}></span>
       </div>
     </div>

@@ -20,12 +20,20 @@
   }
   section {
     .station {
+      display: flex;
+      justify-content: center;
+      position: relative;
       color: #000;
       font-size: 2rem;
       padding-top: 1.5rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
+      i {
+        position: absolute;
+        left: 17rem;
+      }
     }
+
     h4 {
       color: #9dadb6;
       font-size: 1.2rem;
@@ -45,13 +53,12 @@
       margin-bottom: 1.5rem;
     }
     .dust {
-      margin: 0.5rem 0;
+      margin: 0.5rem 1rem;
       display: flex;
       align-items: center;
       div {
         font-size: 1rem;
         &:nth-child(1) {
-          margin-left: 1.2rem;
           text-align: start;
           width: 5rem;
           font-weight: 600;
