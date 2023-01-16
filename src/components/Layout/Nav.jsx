@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavTab from "./NavTab";
 import styles from "./Nav.module.scss";
 import { Outlet } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const NavTabs = ({ setNavStatus }) => {
   return (
