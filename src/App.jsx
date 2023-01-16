@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
 import Nav from "./components/Layout/Nav";
+import Rank from "./pages/Rank/Rank";
 import "./App.scss";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
         <Route element={<Nav />}>
           <Route path="/main" index element={<Main />} />
+          <Route path="/rank" index element={<Rank />} />
         </Route>
       </Routes>
     </>
