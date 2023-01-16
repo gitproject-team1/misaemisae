@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./Container.module.scss";
 
-// props= {children, width, a, b,c }
-const Container = ({ children, width, align }) => {
+const Container = ({ children, align }) => {
   return (
-    <article
-      className={styles.container}
-      style={{ width: width, textAlign: align }}
-    >
+    <article className={styles.container} style={{ textAlign: align }}>
       {children}
     </article>
   );
