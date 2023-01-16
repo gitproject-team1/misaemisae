@@ -12,15 +12,11 @@ const NavTab = ({ children, content, setNavStatus }) => {
       localStorage.removeItem("defaultPlace");
       navigate("/");
     } else if (content === "즐겨찾기") {
-<<<<<<< HEAD
       navigate("/cart");
-=======
-      navigate("/");
     } else if (content === "먼지순위") {
       navigate("/rank");
     } else if (content === "메인페이지") {
       navigate("/main");
->>>>>>> 73212d4ee05712be8abcbe24d3c0ea9bdeed16d0
     }
   };
 

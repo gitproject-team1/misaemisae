@@ -26,11 +26,7 @@ const NavTabs = ({ setNavStatus }) => {
 };
 
 const Nav = () => {
-<<<<<<< HEAD
-  const navigate = useNavigate();
-=======
   const [navStatus, setNavStatus] = useState(false);
->>>>>>> 73212d4ee05712be8abcbe24d3c0ea9bdeed16d0
   return (
     <>
       <Outlet />

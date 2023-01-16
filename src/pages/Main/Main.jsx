@@ -15,7 +15,7 @@ const Main = () => {
   const [color, setColor] = useState("#666666");
   const [loadStatus, setLoadStatus] = useState(false);
   const [likeImage, setlikeImage] = useState(false);
-
+  const [animation, setAnimation] = useState(false);
   const fetchData = async () => {
     setLoadStatus(true);
     const res = await getInfo(sido);
@@ -26,11 +26,15 @@ const Main = () => {
       setData(result);
       setPmgrade(result.pm10Grade);
       setLoadStatus(false);
+      setAnimation(true);
     }, 1000);
   };
 
   useEffect(() => {
     fetchData();
+    // return () => {
+    //   setAnimation(false);
+    // };
   }, []);
 
   useEffect(() => {
@@ -47,20 +51,19 @@ const Main = () => {
       </h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
       <Container width="45%" align="center">
-        <h3 className={styles.station}>
-          {defaultPlace.join(" ")}
-          <div
-            onClick={() => {
-              setlikeImage(!likeImage);
-            }}
-          >
-            {likeImage ? (
-              <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
-            ) : (
-              <i className="fa-regular fa-heart"></i>
-            )}
-          </div>
-        </h3>
+        <div
+          onClick={() => {
+            setlikeImage(!likeImage);
+          }}
+          className={styles.like}
+        >
+          {likeImage ? (
+            <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
+          ) : (
+            <i className="fa-regular fa-heart"></i>
+          )}
+        </div>
+        <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
           {pmgrade ? (
@@ -83,7 +86,11 @@ const Main = () => {
             ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1]
             : "측정중"}
         </h5>
-        <Dusts pm="미세먼지" value={data.pm10Value}></Dusts>
+        <Dusts
+          pm="미세먼지"
+          value={data.pm10Value}
+          animation={animation}
+        ></Dusts>
         <Dusts pm="초미세먼지" value={data.pm25Value}></Dusts>
       </Container>
       {loadStatus && <Load />}
@@ -91,7 +98,7 @@ const Main = () => {
   );
 };
 
-const Dusts = ({ pm, value }) => {
+const Dusts = ({ pm, value, animation }) => {
   return (
     <div className={styles.dust}>
       <div>{pm}</div>
@@ -102,6 +109,7 @@ const Dusts = ({ pm, value }) => {
             width: `${(value / 200) * 100}%`,
             maxWidth: `${(value / 200) * 100}%`,
           }}
+          className={animation && "active"}
         ></span>
       </div>
     </div>
