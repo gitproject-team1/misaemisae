@@ -19,19 +19,20 @@
     margin-bottom: 1.5rem;
   }
   section {
+    .like {
+      margin-top: 0.5rem;
+      text-align: right;
+      margin-right: 1rem;
+      i {
+        font-size: 2rem;
+      }
+    }
     .station {
-      display: flex;
-      justify-content: center;
-      position: relative;
       color: #000;
       font-size: 2rem;
-      padding-top: 1.5rem;
+      margin-top: 0.5rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
-      i {
-        position: absolute;
-        left: 17rem;
-      }
     }
 
     h4 {
@@ -56,6 +57,7 @@
       margin: 0.5rem 1rem;
       display: flex;
       align-items: center;
+      justify-content: center;
       div {
         font-size: 1rem;
         &:nth-child(1) {

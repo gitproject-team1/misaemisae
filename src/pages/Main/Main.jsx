@@ -5,7 +5,9 @@ import styles from "./Main.module.scss";
 import Load from "../../components/UI/Load";
 
 const Main = () => {
-  const [defaultPlace, setDefaultPlace] = useState(JSON.parse(localStorage.getItem("defaultPlace")));
+  const [defaultPlace, setDefaultPlace] = useState(
+    JSON.parse(localStorage.getItem("defaultPlace"))
+  );
   const [sido, setSido] = useState(defaultPlace[0]);
   const [station, setStation] = useState(defaultPlace[1]);
   const [data, setData] = useState("");
@@ -40,19 +42,24 @@ const Main = () => {
 
   return (
     <div className={styles.box}>
-      <h1 className={styles.header}>{defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다</h1>
+      <h1 className={styles.header}>
+        {defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다
+      </h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
       <Container width="30%" align="center">
-        <h3 className={styles.station}>
-          {defaultPlace.join(" ")}
-          <div
-            onClick={() => {
-              setlikeImage(!likeImage);
-            }}
-          >
-            {likeImage ? <i className="fa-solid fa-heart" style={{ color: "red" }}></i> : <i className="fa-regular fa-heart"></i>}
-          </div>
-        </h3>
+        <div
+          className={styles.like}
+          onClick={() => {
+            setlikeImage(!likeImage);
+          }}
+        >
+          {likeImage ? (
+            <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
+          ) : (
+            <i className="fa-regular fa-heart"></i>
+          )}
+        </div>
+        <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
           {pmgrade ? (
@@ -71,7 +78,9 @@ const Main = () => {
             color: color,
           }}
         >
-          {pmgrade ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1] : "측정중"}
+          {pmgrade
+            ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1]
+            : "측정중"}
         </h5>
         <Dusts pm="미세먼지" value={data.pm10Value}></Dusts>
         <Dusts pm="초미세먼지" value={data.pm25Value}></Dusts>
@@ -87,7 +96,12 @@ const Dusts = ({ pm, value }) => {
       <div>{pm}</div>
       <div>{value}</div>
       <div className="progress-bar">
-        <span style={{ width: `${value}%`, maxWidth: `${value}%` }}></span>
+        <span
+          style={{
+            width: `${(value / 200) * 100}%`,
+            maxWidth: `${(value / 200) * 100}%`,
+          }}
+        ></span>
       </div>
     </div>
   );

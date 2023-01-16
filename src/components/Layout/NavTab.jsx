@@ -10,6 +10,8 @@ const NavTab = ({ children, content }) => {
     if (content === "정보변경") {
       localStorage.removeItem("defaultPlace");
       navigate("/");
+    } else if (content === "즐겨찾기") {
+      navigate("/cart");
     }
   };
 
