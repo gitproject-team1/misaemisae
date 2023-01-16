@@ -3,7 +3,11 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
 import Nav from "./components/Layout/Nav";
+<<<<<<< HEAD
 import Cart from "./pages/Cart/Cart";
+=======
+import Rank from "./pages/Rank/Rank";
+>>>>>>> 73212d4ee05712be8abcbe24d3c0ea9bdeed16d0
 import "./App.scss";
 
 function App() {
@@ -29,6 +33,7 @@ function App() {
         {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
         <Route element={<Nav />}>
           <Route path="/main" index element={<Main />} />
+          <Route path="/rank" index element={<Rank />} />
         </Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
       </Routes>

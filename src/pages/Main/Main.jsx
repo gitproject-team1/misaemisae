@@ -6,7 +6,7 @@ import Load from "../../components/UI/Load";
 
 const Main = () => {
   const [defaultPlace, setDefaultPlace] = useState(
-    JSON.parse(localStorage.getItem("defaultPlace"))
+    JSON.parse(localStorage.getItem("defaultPlace")),
   );
   const [sido, setSido] = useState(defaultPlace[0]);
   const [station, setStation] = useState(defaultPlace[1]);
@@ -41,25 +41,26 @@ const Main = () => {
   }, [pmgrade]);
 
   return (
-    <div className={styles.box}>
+    <section className={styles.box}>
       <h1 className={styles.header}>
         {defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다
       </h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
-      <Container width="30%" align="center">
-        <div
-          className={styles.like}
-          onClick={() => {
-            setlikeImage(!likeImage);
-          }}
-        >
-          {likeImage ? (
-            <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
-          ) : (
-            <i className="fa-regular fa-heart"></i>
-          )}
-        </div>
-        <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
+      <Container width="45%" align="center">
+        <h3 className={styles.station}>
+          {defaultPlace.join(" ")}
+          <div
+            onClick={() => {
+              setlikeImage(!likeImage);
+            }}
+          >
+            {likeImage ? (
+              <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
+            ) : (
+              <i className="fa-regular fa-heart"></i>
+            )}
+          </div>
+        </h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
           {pmgrade ? (
@@ -86,7 +87,7 @@ const Main = () => {
         <Dusts pm="초미세먼지" value={data.pm25Value}></Dusts>
       </Container>
       {loadStatus && <Load />}
-    </div>
+    </section>
   );
 };
 

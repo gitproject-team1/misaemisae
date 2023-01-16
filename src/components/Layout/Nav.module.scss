@@ -1,3 +1,5 @@
+@import "../../variables";
+
 nav {
   display: flex;
   position: fixed;
@@ -7,9 +9,52 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: fadeIn 0.5s ease-in-out;
   .container {
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+}
+
+.arrow {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 20px;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  i {
+    color: $color-sub2;
+    font-size: 40px;
+    cursor: pointer;
+  }
+}
+
+.bounce {
+  animation: bounce_frames 1s infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+@keyframes bounce_frames {
+  from {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 3;
+    transform: none;
   }
 }
