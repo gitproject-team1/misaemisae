@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
 import Nav from "./components/Layout/Nav";
@@ -16,9 +16,10 @@ function App() {
   }
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (placeArr[1].length !== 0) {
+    if (placeArr[1].length !== 0 && location.pathname === "/") {
       navigate("/main");
     }
   }, []);
@@ -29,10 +30,10 @@ function App() {
       <Routes>
         {placeArr[1].length === 0 && <Route index element={<Welcome />} />}
         <Route element={<Nav />}>
-          <Route path="/main" index element={<Main />} />
-          <Route path="/rank" index element={<Rank />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/rank" element={<Rank />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
-        <Route path="/cart" element={<Cart></Cart>}></Route>
       </Routes>
     </>
   );
