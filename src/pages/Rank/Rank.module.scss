@@ -1,13 +1,21 @@
+@import "../../variables";
+
 .rankContainer {
   display: flex;
   justify-content: center;
   article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h1 {
-      font-size: 2rem;
+      width: 40%;
+      background-color: $color-main;
+      font-size: 1rem;
       font-weight: 600;
-      color: #000;
-      padding-top: 1.5rem;
-      margin-bottom: 1.5rem;
+      color: #fff;
+      padding: 0.7rem 2.5rem;
+      margin: 2rem 4rem 1rem;
+      border-radius: 20px;
     }
   }
 }
