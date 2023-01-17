@@ -85,15 +85,12 @@
             height: 12px;
             border-radius: 10px;
             background: linear-gradient(to right, $color-select, $color-sub);
+            animation: active 5s ease-in-out;
           }
         }
       }
     }
   }
-}
-
-.active {
-  animation: active 5s 1s;
 }
 
 @keyframes active {
