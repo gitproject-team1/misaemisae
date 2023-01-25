@@ -18,4 +18,15 @@
       border-radius: 20px;
     }
   }
+  margin-bottom: 80px;
+  .sort {
+    width: 85%;
+    text-align: right;
+    select {
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }
