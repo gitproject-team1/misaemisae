@@ -10,32 +10,45 @@
     &:first-child {
       width: 1.8rem;
       color: #9dadb6;
-      font-size: 1.25rem;
-    }
-    &:nth-child(2) {
-      width: 2.7rem;
-      font-size: 1.56rem;
-      font-weight: 600;
-    }
-    &:nth-child(3) {
-      font-size: 1.56rem;
+      font-size: 1.15rem;
     }
   }
-  .pm {
-    width: 8.43rem;
-    div {
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      margin-bottom: 5px;
+      &:nth-child(1) {
+        width: 2.7rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      &:nth-child(2) {
+        width: auto;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    }
+    .pm {
       display: flex;
       justify-content: center;
-      align-items: center;
-      span {
-        &:first-child {
-          font-size: 0.85rem;
-          font-weight: 500;
-        }
-        &:last-child {
-          font-weight: 600;
-          margin-left: 10px;
-          font-size: 1.125rem;
+      div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 10px;
+        span {
+          width: auto;
+          &:first-child {
+            font-size: 0.85rem;
+            font-weight: 500;
+          }
+          &:last-child {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 1.025rem;
+          }
         }
       }
     }

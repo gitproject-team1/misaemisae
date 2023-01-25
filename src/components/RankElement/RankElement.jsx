@@ -23,16 +23,18 @@ const RankElement = ({ sido, pm10, pm25, index }) => {
   return (
     <div className={styles.container}>
       <span>{index + 1}</span>
-      <span>{sido}</span>
-      <span style={{ color: color }}>{pmGrade}</span>
-      <div className={styles.pm}>
-        <div>
-          <span>미세먼지</span>
-          <span>{pm10}</span>
-        </div>
-        <div>
-          <span>초미세먼지</span>
-          <span>{pm25}</span>
+      <div className={styles.description}>
+        <span>{sido}</span>
+        <span style={{ color: color }}>{pmGrade}</span>
+        <div className={styles.pm}>
+          <div>
+            <span>미세먼지</span>
+            <span>{pm10}</span>
+          </div>
+          <div>
+            <span>초미세먼지</span>
+            <span>{pm25}</span>
+          </div>
         </div>
       </div>
     </div>
