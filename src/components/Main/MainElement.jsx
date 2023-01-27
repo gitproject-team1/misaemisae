@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MainElement.module.scss";
 import Load from "../UI/Load";
 import Container from "../UI/Container";
 import Progressbar from "./Progressbar";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../store/cartItemSlice";
 
 const MainElement = ({
   defaultPlace,
@@ -15,8 +13,9 @@ const MainElement = ({
   loadStatus,
   pmgrade,
 }) => {
-  const dispatch = useDispatch();
-  const cartArr = JSON.parse(localStorage.getItem("favorites")) || [];
+  const [cartArr, setcartArr] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || [],
+  );
 
   return (
     <section className={styles.box}>
@@ -28,9 +27,11 @@ const MainElement = ({
         <div
           onClick={() => {
             setlikeIcon(!likeIcon);
-            dispatch(addItem({ location: defaultPlace.join(" ") }));
-            cartArr.push(defaultPlace.join(" "));
-            localStorage.setItem("favorites", JSON.stringify(cartArr));
+            let data = [...cartArr];
+            data.push(defaultPlace.join(" "));
+            data = new Set(data);
+            setcartArr([...data]);
+            localStorage.setItem("favorites", JSON.stringify([...data]));
           }}
           className={styles.like}
         >

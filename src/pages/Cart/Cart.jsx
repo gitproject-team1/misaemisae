@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Cart.module.scss";
 import Container from "../../components/UI/Container";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { addItem } from "../../store/cartItemSlice";
 
 const Cart = () => {
   const [likeIcon, setlikeIcon] = useState(true);
@@ -10,13 +11,14 @@ const Cart = () => {
     return state;
   });
 
-  // useEffect(() => {
-  //   localStorage;
+  const dispatch = useDispatch();
 
-  //   return () => {
-  //     second;
-  //   };
-  // }, [third]);
+  useEffect(() => {
+    const cartArr = JSON.parse(localStorage.getItem("favorites"));
+    {
+      cartArr.map((data) => dispatch(addItem({ location: data })));
+    }
+  }, [likeIcon]);
 
   return (
     <section className={styles.box}>
