@@ -3,6 +3,8 @@ import styles from "./MainElement.module.scss";
 import Load from "../UI/Load";
 import Container from "../UI/Container";
 import Progressbar from "./Progressbar";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../store/cartItemSlice";
 
 const MainElement = ({
   defaultPlace,
@@ -13,6 +15,9 @@ const MainElement = ({
   loadStatus,
   pmgrade,
 }) => {
+  const dispatch = useDispatch();
+  const cartArr = JSON.parse(localStorage.getItem("favorites")) || [];
+
   return (
     <section className={styles.box}>
       <h1 className={styles.header}>
@@ -23,6 +28,9 @@ const MainElement = ({
         <div
           onClick={() => {
             setlikeIcon(!likeIcon);
+            dispatch(addItem({ location: defaultPlace.join(" ") }));
+            cartArr.push(defaultPlace.join(" "));
+            localStorage.setItem("favorites", JSON.stringify(cartArr));
           }}
           className={styles.like}
         >
