@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import getInfo from "../../api/requests";
 import MainElement from "../../components/Main/MainElement";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteItem } from "../../store/cartItemSlice";
+import { useSelector } from "react-redux";
+import { fetchData } from "../../api/api";
 
 const Main = () => {
   const [defaultPlace, setDefaultPlace] = useState(
@@ -15,13 +14,9 @@ const Main = () => {
   const [color, setColor] = useState("#666666");
   const [loadStatus, setLoadStatus] = useState(false);
   const [likeIcon, setlikeIcon] = useState(false);
+  const [isError, setIsError] = useState("");
 
-  const dispatch = useDispatch();
   const state = useSelector((state) => state);
-
-  // useEffect(() => {
-  //   if (likeIcon === false) dispatch(deleteItem(defaultPlace.join(" ")));
-  // }, [likeIcon]);
 
   useEffect(() => {
     {
@@ -33,13 +28,8 @@ const Main = () => {
 
   const fetchData = async () => {
     setLoadStatus(true);
-    const res = await getInfo(sido);
     setTimeout(() => {
-      const result = res.response.body.items.find((data) => {
-        return data.stationName === station;
-      });
-      setData(result);
-      setPmgrade(result.pm10Grade);
+      fetchData(sido, station, setData, setPmgrade, setIsError);
       setLoadStatus(false);
     }, 1000);
   };
@@ -71,3 +61,4 @@ const Main = () => {
 };
 
 export default Main;
+export { fetchData };

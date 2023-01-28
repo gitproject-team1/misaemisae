@@ -7,6 +7,7 @@ import { addItem, deleteItem } from "../../store/cartItemSlice";
 
 const Cart = () => {
   const [location, setLocation] = useState("");
+  const [loadStatus, setLoadStatus] = useState(false);
   const state = useSelector((state) => {
     return state;
   });
