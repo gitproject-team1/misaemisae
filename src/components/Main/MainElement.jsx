@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MainElement.module.scss";
 import Load from "../UI/Load";
 import Container from "../UI/Container";
 import Progressbar from "./Progressbar";
+import { useDispatch } from "react-redux";
+import { addItem, deleteItem } from "../../store/cartItemSlice";
 
 const MainElement = ({
   defaultPlace,
@@ -13,9 +15,15 @@ const MainElement = ({
   loadStatus,
   pmgrade,
 }) => {
-  const [cartArr, setcartArr] = useState(
-    JSON.parse(localStorage.getItem("favorites")) || [],
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (likeIcon === true) {
+      dispatch(addItem({ location: defaultPlace.join(" ") }));
+    } else {
+      dispatch(deleteItem(defaultPlace.join(" ")));
+    }
+  }, [likeIcon]);
 
   return (
     <section className={styles.box}>
@@ -24,17 +32,7 @@ const MainElement = ({
       </h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
       <Container align="center">
-        <div
-          onClick={() => {
-            setlikeIcon(!likeIcon);
-            let data = [...cartArr];
-            data.push(defaultPlace.join(" "));
-            data = new Set(data);
-            setcartArr([...data]);
-            localStorage.setItem("favorites", JSON.stringify([...data]));
-          }}
-          className={styles.like}
-        >
+        <div onClick={() => setlikeIcon(!likeIcon)} className={styles.like}>
           {likeIcon ? (
             <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
           ) : (

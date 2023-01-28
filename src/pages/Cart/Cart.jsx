@@ -3,10 +3,10 @@ import styles from "./Cart.module.scss";
 import Container from "../../components/UI/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { addItem } from "../../store/cartItemSlice";
+import { addItem, deleteItem } from "../../store/cartItemSlice";
 
 const Cart = () => {
-  const [likeIcon, setlikeIcon] = useState(true);
+  const [location, setLocation] = useState("");
   const state = useSelector((state) => {
     return state;
   });
@@ -14,11 +14,8 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const cartArr = JSON.parse(localStorage.getItem("favorites"));
-    {
-      cartArr.map((data) => dispatch(addItem({ location: data })));
-    }
-  }, [likeIcon]);
+    dispatch(deleteItem(location));
+  }, [location]);
 
   return (
     <section className={styles.box}>
@@ -28,15 +25,11 @@ const Cart = () => {
           <div className={styles.left_box}>
             <div
               onClick={() => {
-                setlikeIcon(!likeIcon);
+                setLocation(data.location);
               }}
-              className={styles.like}
+              className={styles.delete}
             >
-              {likeIcon ? (
-                <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
-              ) : (
-                <i className="fa-regular fa-heart"></i>
-              )}
+              <i class="fa-solid fa-xmark"></i>
             </div>
             <h2>{data.location}</h2>
           </div>

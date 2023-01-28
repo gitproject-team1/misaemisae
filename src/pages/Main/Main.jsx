@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import getInfo from "../../api/requests";
 import MainElement from "../../components/Main/MainElement";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteItem } from "../../store/cartItemSlice";
 
 const Main = () => {
   const [defaultPlace, setDefaultPlace] = useState(
@@ -14,10 +16,24 @@ const Main = () => {
   const [loadStatus, setLoadStatus] = useState(false);
   const [likeIcon, setlikeIcon] = useState(false);
 
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  // useEffect(() => {
+  //   if (likeIcon === false) dispatch(deleteItem(defaultPlace.join(" ")));
+  // }, [likeIcon]);
+
+  useEffect(() => {
+    {
+      state.cartItem?.map((data) => {
+        if (data.location === defaultPlace.join(" ")) setlikeIcon(true);
+      });
+    }
+  }, []);
+
   const fetchData = async () => {
     setLoadStatus(true);
     const res = await getInfo(sido);
-    console.log(res);
     setTimeout(() => {
       const result = res.response.body.items.find((data) => {
         return data.stationName === station;
