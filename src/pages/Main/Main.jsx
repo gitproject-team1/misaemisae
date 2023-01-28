@@ -26,16 +26,8 @@ const Main = () => {
     }
   }, []);
 
-  const fetchData = async () => {
-    setLoadStatus(true);
-    setTimeout(() => {
-      fetchData(sido, station, setData, setPmgrade, setIsError);
-      setLoadStatus(false);
-    }, 1000);
-  };
-
   useEffect(() => {
-    fetchData();
+    fetchData(sido, station, setData, setPmgrade, setLoadStatus, setIsError);
   }, []);
 
   useEffect(() => {

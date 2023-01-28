@@ -6,17 +6,20 @@ export const fetchData = async (
   station,
   setData,
   setPmgrade,
+  setLoadStatus,
   setError,
 ) => {
   try {
+    setLoadStatus(true);
     const res = await getInfo(sido);
-    if (res.status === 200) {
+    setTimeout(() => {
       const result = res.response.body.items.find((data) => {
         return data.stationName === station;
       });
       setData(result);
       setPmgrade(result.pm10Grade);
-    }
+      setLoadStatus(false);
+    }, 1000);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error.message);

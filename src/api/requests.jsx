@@ -8,7 +8,7 @@ const API_KEY2 =
 export default async function getInfo(sido) {
   try {
     const response = await axios.get(
-      `https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=${API_KEY2}&returnType=json&numOfRows=100&pageNo=1&sidoName=${sido}&ver=1.0`,
+      `https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=${API_KEY}&returnType=json&numOfRows=100&pageNo=1&sidoName=${sido}&ver=1.0`,
     );
     return response.data;
   } catch (error) {
