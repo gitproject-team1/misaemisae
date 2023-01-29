@@ -5,6 +5,7 @@ import Container from "../UI/Container";
 import Progressbar from "./Progressbar";
 import { useDispatch } from "react-redux";
 import { addItem, deleteItem } from "../../store/cartItemSlice";
+import expressionChange from "../../utils/expressionChange";
 
 const MainElement = ({
   defaultPlace,
@@ -42,16 +43,7 @@ const MainElement = ({
         <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
-          {pmgrade ? (
-            [
-              <i className="fa-regular fa-face-smile"></i>,
-              <i className="fa-regular fa-face-meh"></i>,
-              <i className="fa-regular fa-face-frown"></i>,
-              <i className="fa-regular fa-face-dizzy"></i>,
-            ][pmgrade - 1]
-          ) : (
-            <i className="fa-regular fa-face-meh-blank"></i>
-          )}
+          {expressionChange(pmgrade)}
         </div>
         <h5
           style={{

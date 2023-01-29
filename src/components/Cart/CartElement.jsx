@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./CartElement.module.scss";
 import { fetchData } from "../../api/api";
 import Load from "../UI/Load";
+import colorChange from "./../../utils/colorChange";
+import expressionChange from "./../../utils/expressionChange";
 
 const CartElement = ({ value, setLocation }) => {
   const [sido, setSido] = useState(value.location.split(" ")[0]);
@@ -17,10 +19,7 @@ const CartElement = ({ value, setLocation }) => {
   }, []);
 
   useEffect(() => {
-    if (pmgrade === "1") setColor("#1e64ee");
-    else if (pmgrade === "2") setColor("#00d500");
-    else if (pmgrade === "3") setColor("#f95a20");
-    else if (pmgrade === "4") setColor("#e73532");
+    colorChange(pmgrade, setColor);
   }, [pmgrade]);
 
   return (
@@ -37,16 +36,7 @@ const CartElement = ({ value, setLocation }) => {
         <h2>{value.location}</h2>
       </div>
       <div className={styles.status} style={{ backgroundColor: color }}>
-        {pmgrade ? (
-          [
-            <i className="fa-regular fa-face-smile"></i>,
-            <i className="fa-regular fa-face-meh"></i>,
-            <i className="fa-regular fa-face-frown"></i>,
-            <i className="fa-regular fa-face-dizzy"></i>,
-          ][pmgrade - 1]
-        ) : (
-          <i className="fa-regular fa-face-meh-blank"></i>
-        )}
+        {expressionChange(pmgrade)}
         <h5>
           {pmgrade
             ? ["좋음", "보통", "나쁨", "매우나쁨"][pmgrade - 1]

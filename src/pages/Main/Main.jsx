@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainElement from "../../components/Main/MainElement";
 import { useSelector } from "react-redux";
 import { fetchData } from "../../api/api";
+import colorChange from "../../utils/colorChange";
 
 const Main = () => {
   const [defaultPlace, setDefaultPlace] = useState(
@@ -31,10 +32,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    if (pmgrade === "1") setColor("#1e64ee");
-    else if (pmgrade === "2") setColor("#00d500");
-    else if (pmgrade === "3") setColor("#f95a20");
-    else if (pmgrade === "4") setColor("#e73532");
+    colorChange(pmgrade, setColor);
   }, [pmgrade]);
 
   return (
