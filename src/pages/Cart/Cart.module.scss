@@ -12,41 +12,4 @@
     border-bottom: 1px solid #fff;
     margin-bottom: 1rem;
   }
-  article {
-    width: 25rem;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    .left_box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .delete {
-        font-size: 1.5rem;
-        margin-right: 1rem;
-        cursor: pointer;
-      }
-    }
-    .status {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 5rem;
-      height: 4rem;
-      background-color: #1e64ee;
-      border-radius: 0.6rem;
-      color: #fff;
-      i {
-        font-size: 2rem;
-        margin-bottom: 0.3rem;
-      }
-      p {
-        font-size: 0.9rem;
-      }
-    }
-  }
 }
