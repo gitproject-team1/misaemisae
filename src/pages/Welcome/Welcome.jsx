@@ -37,7 +37,9 @@ const Welcome = () => {
   useEffect(() => {
     if (selectedStation === "") {
       let placeArr = JSON.stringify([sido, station[0]]);
-      localStorage.setItem("defaultPlace", placeArr);
+      if (!station[0])
+        localStorage.setItem("defaultPlace", JSON.stringify([sido, ""]));
+      else localStorage.setItem("defaultPlace", placeArr);
     } else {
       let placeArr = JSON.stringify([sido, selectedStation]);
       localStorage.setItem("defaultPlace", placeArr);
