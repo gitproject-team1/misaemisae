@@ -29,3 +29,19 @@ export const fetchData = async (
     }
   }
 };
+
+export const getSidoInfo = async (sido, setLoadstatus, setStation) => {
+  if (sido && sido !== "지역") {
+    setLoadstatus(true);
+    const res = await getInfo(sido);
+    const stations = res.response.body.items.map((item) => {
+      return item.stationName;
+    });
+    setTimeout(() => {
+      setLoadstatus(false);
+      setStation(stations);
+    }, 1000);
+  } else {
+    setStation([]);
+  }
+};

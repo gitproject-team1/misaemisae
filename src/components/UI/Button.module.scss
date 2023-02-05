@@ -14,4 +14,8 @@
   &:hover {
     transform: scale(1.15);
   }
+  &:disabled {
+    cursor: no-drop;
+    transform: scale(1);
+  }
 }

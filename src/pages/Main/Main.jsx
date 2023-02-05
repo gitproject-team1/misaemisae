@@ -22,14 +22,20 @@ const Main = () => {
   useEffect(() => {
     {
       state.cartItem?.map((data) => {
-        if (data.location === defaultPlace.join(" ")) setlikeIcon(true);
+        if (data.location === `${sido} ${station}`) setlikeIcon(true);
+        else setlikeIcon(false);
       });
     }
-  }, []);
+  }, [sido, station]);
 
   useEffect(() => {
     fetchData(sido, station, setData, setPmgrade, setLoadStatus, setIsError);
-  }, []);
+    return () => {
+      setColor("#666666");
+      setPmgrade("");
+      setData("");
+    };
+  }, [station]);
 
   useEffect(() => {
     colorChange(pmgrade, setColor);
@@ -38,13 +44,17 @@ const Main = () => {
   return (
     <>
       <MainElement
-        defaultPlace={defaultPlace}
         data={data}
         likeIcon={likeIcon}
         setlikeIcon={setlikeIcon}
         color={color}
         loadStatus={loadStatus}
+        setLoadStatus={setLoadStatus}
         pmgrade={pmgrade}
+        mainSido={sido}
+        mainStation={station}
+        setMainSido={setSido}
+        setMainStation={setStation}
       />
     </>
   );
