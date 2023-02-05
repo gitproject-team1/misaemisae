@@ -5,6 +5,7 @@ import Button from "../../components/UI/Button";
 import getInfo from "../../api/requests";
 import Load from "../../components/UI/Load";
 import { Link } from "react-router-dom";
+import { getSidoInfo } from "../../api/api";
 
 const Welcome = () => {
   // 최종 검색정보는 sido와 selectedStation에 들어있음.
@@ -13,25 +14,8 @@ const Welcome = () => {
   const [selectedStation, setSelectedStation] = useState("");
   const [loadStatus, setLoadstatus] = useState(false);
 
-  const getSidoInfo = async () => {
-    if (sido && sido !== "지역") {
-      setLoadstatus(true);
-      const res = await getInfo(sido);
-      const stations = res.response.body.items.map((item) => {
-        return item.stationName;
-      });
-      setTimeout(() => {
-        setLoadstatus(false);
-        console.log(1);
-        setStation(stations);
-      }, 1000);
-    } else {
-      setStation([]);
-    }
-  };
-
   useEffect(() => {
-    getSidoInfo();
+    getSidoInfo(sido, setLoadstatus, setStation);
   }, [sido]);
 
   useEffect(() => {

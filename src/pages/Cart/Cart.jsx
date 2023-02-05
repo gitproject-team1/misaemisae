@@ -11,7 +11,6 @@ const Cart = () => {
   const state = useSelector((state) => {
     return state;
   });
-  console.log(state.cartItem);
 
   const dispatch = useDispatch();
 

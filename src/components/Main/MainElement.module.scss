@@ -16,15 +16,27 @@
     color: #fff;
     font-size: 1.3rem;
     font-weight: 200;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .selectBox {
+    select {
+      &:nth-child(2) {
+        margin-left: 0.8rem;
+      }
+    }
+    button {
+      margin-left: 0.8rem;
+    }
   }
   article {
     .like {
+      width: 2rem;
+      height: 2rem;
       margin-top: 0.5rem;
-      text-align: right;
-      margin-right: 1rem;
+      margin-left: 37rem;
       i {
         font-size: 2rem;
+        cursor: pointer;
       }
     }
     .station {

@@ -6,32 +6,70 @@ import Progressbar from "./Progressbar";
 import { useDispatch } from "react-redux";
 import { addItem, deleteItem } from "../../store/cartItemSlice";
 import expressionChange from "../../utils/expressionChange";
+import Select from "../UI/Select";
+import { getSidoInfo } from "../../api/api";
+import Button from "../UI/Button";
 
 const MainElement = ({
-  defaultPlace,
   data,
   likeIcon,
   setlikeIcon,
   color,
   loadStatus,
+  setLoadStatus,
   pmgrade,
+  mainSido,
+  mainStation,
+  setMainSido,
+  setMainStation,
 }) => {
+  const [sido, setSido] = useState("");
+  const [station, setStation] = useState([]);
+  const [selectedStation, setSelectedStation] = useState("");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (likeIcon === true) {
-      dispatch(addItem({ location: defaultPlace.join(" ") }));
+      dispatch(addItem({ location: `${mainSido} ${mainStation}` }));
     } else {
-      dispatch(deleteItem(defaultPlace.join(" ")));
+      dispatch(deleteItem(`${mainSido} ${mainStation}`));
     }
   }, [likeIcon]);
+
+  useEffect(() => {
+    getSidoInfo(sido, setLoadStatus, setStation);
+  }, [sido]);
+
+  const selectSido = (input) => {
+    setSido(input);
+    setSelectedStation("");
+  };
+
+  const selectStation = (input) => {
+    setSelectedStation(input);
+  };
+
+  const handleClick = () => {
+    setMainSido(sido);
+    setMainStation(selectedStation);
+  };
 
   return (
     <section className={styles.box}>
       <h1 className={styles.header}>
-        {defaultPlace.join(" ")} 미세먼지 농도는 다음과 같습니다
+        {`${mainSido} ${mainStation} 미세먼지 농도는 다음과 같습니다`}
       </h1>
       <h2 className={styles.time}>{data.dataTime} 기준</h2>
+      <div className={styles.selectBox}>
+        <Select selectSido={selectSido} stations={[]} />
+        {station.length !== 0 && (
+          <Select selectStation={selectStation} stations={station} />
+        )}
+        <Button onClick={handleClick} disabled={!sido}>
+          검색
+        </Button>
+      </div>
       <Container align="center">
         <div onClick={() => setlikeIcon(!likeIcon)} className={styles.like}>
           {likeIcon ? (
@@ -40,7 +78,7 @@ const MainElement = ({
             <i className="fa-regular fa-heart"></i>
           )}
         </div>
-        <h3 className={styles.station}>{defaultPlace.join(" ")}</h3>
+        <h3 className={styles.station}>{`${mainSido} ${mainStation}`}</h3>
         <h4>현재 미세먼지 농도는</h4>
         <div className={styles.expression} style={{ color: color }}>
           {expressionChange(pmgrade)}
