@@ -1,35 +1,35 @@
 @import "../../variables.scss";
 
 .dust {
-  margin: 0.5rem 1rem;
   @include center;
+  margin: 0.5rem 1rem;
   div {
     font-size: 1rem;
     &:nth-child(1) {
-      text-align: start;
       width: 5rem;
+      text-align: start;
       font-weight: 600;
     }
     &:nth-child(2) {
-      margin-left: 0.2rem;
       width: 1.3rem;
-      text-align: center;
       font-weight: 900;
+      text-align: center;
+      margin-left: 0.2rem;
     }
     &:nth-child(3) {
-      margin-left: 1rem;
       width: 170px;
       height: 12px;
       background: #f0f0f0;
       border-radius: 10px;
+      margin-left: 1rem;
       box-shadow: inset 3px 3px 10px #ccc;
       span {
-        width: 0px;
         display: block;
-        background: $color-sub;
+        width: 0px;
         height: 12px;
-        border-radius: 10px;
+        background: $color-sub;
         background: linear-gradient(to right, $color-select, $color-sub);
+        border-radius: 10px;
         animation: active 5s ease-in-out;
       }
     }

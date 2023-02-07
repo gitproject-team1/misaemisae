@@ -1,12 +1,10 @@
 @import "../../variables";
 
 .rankContainer {
-  display: flex;
-  justify-content: center;
+  @include center($alignment: null);
   article {
-    display: flex;
+    @include center($direction: null);
     flex-direction: column;
-    align-items: center;
     h1 {
       width: 40%;
       background-color: $color-main;

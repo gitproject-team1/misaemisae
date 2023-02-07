@@ -8,8 +8,8 @@ $dust-bad: #f95a20;
 $dust-super-bad: #e73532;
 $dust-null: #666666;
 
-@mixin center($sort: center) {
+@mixin center($direction: center, $alignment: center) {
   display: flex;
-  justify-content: $sort;
-  align-items: center;
+  justify-content: $direction;
+  align-items: $alignment;
 }

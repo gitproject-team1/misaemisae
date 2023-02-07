@@ -9,8 +9,7 @@ nav {
   flex-direction: column;
   animation: fadeIn 0.5s ease-in-out;
   .container {
-    display: flex;
-    justify-content: center;
+    @include center($alignment: null);
     width: 100%;
   }
 }
