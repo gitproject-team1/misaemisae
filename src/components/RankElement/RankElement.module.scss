@@ -1,11 +1,11 @@
+@import "../../variables";
+
 .container {
-  display: flex;
+  @include center(space-around);
   width: 60%;
   padding: 10px 0;
-  justify-content: space-around;
   border-bottom: 1px solid rgb(223, 223, 223);
   border-radius: 10px;
-  align-items: center;
   & > span {
     &:first-child {
       width: 1.8rem;
@@ -14,9 +14,8 @@
     }
   }
   .description {
-    display: flex;
+    @include center($direction: null);
     flex-direction: column;
-    align-items: center;
     span {
       margin-bottom: 5px;
       &:nth-child(1) {
@@ -31,12 +30,9 @@
       }
     }
     .pm {
-      display: flex;
-      justify-content: center;
+      @include center($alignment: null);
       div {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        @include center(flex-start);
         margin-right: 10px;
         span {
           width: auto;

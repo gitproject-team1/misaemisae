@@ -1,9 +1,9 @@
+@import "../../variables";
+
 .container {
-  display: flex;
+  @include center;
   color: #ffffff;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   font-weight: 600;
   h1 {

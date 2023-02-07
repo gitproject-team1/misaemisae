@@ -1,21 +1,18 @@
 @import "../../variables";
 
 .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center;
   flex-direction: column;
   margin-top: 2rem;
+  font-size: 1.3rem;
   .header {
-    color: #fff;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
     font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
   }
   .time {
-    color: #fff;
-    font-size: 1.3rem;
     font-weight: 200;
+    color: #fff;
     margin-bottom: 1.2rem;
   }
   .selectBox {
@@ -42,8 +39,8 @@
     .station {
       color: #000;
       font-size: 2rem;
-      margin-top: 0.5rem;
       font-weight: 600;
+      margin-top: 0.5rem;
       margin-bottom: 1.5rem;
     }
 

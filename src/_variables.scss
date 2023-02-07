@@ -7,3 +7,9 @@ $dust-moderate: #00d500;
 $dust-bad: #f95a20;
 $dust-super-bad: #e73532;
 $dust-null: #666666;
+
+@mixin center($direction: center, $alignment: center) {
+  display: flex;
+  justify-content: $direction;
+  align-items: $alignment;
+}

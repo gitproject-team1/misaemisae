@@ -1,17 +1,15 @@
+@import "../../variables";
+
 article.container {
   width: 25rem;
   background-color: #ffffff;
   border-radius: 8px;
   margin: 1rem 0.75rem 0 0.75rem;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include center(space-between);
   flex-direction: row;
   .left_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center;
     .delete {
       font-size: 1.5rem;
       margin-right: 1rem;
@@ -19,9 +17,7 @@ article.container {
     }
   }
   .status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center;
     flex-direction: column;
     width: 5rem;
     height: 4rem;
