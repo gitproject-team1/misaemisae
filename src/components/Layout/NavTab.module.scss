@@ -1,14 +1,12 @@
 @import "../../variables";
 .item {
-  display: flex;
+  @include center;
   width: 10rem;
   height: 4rem;
   margin: 0 0.5rem;
   cursor: pointer;
   background-color: $color-select;
   border-radius: 10px;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 1rem;
   i {
     text-align: center;

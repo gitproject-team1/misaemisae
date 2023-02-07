@@ -1,11 +1,11 @@
+@import "../../variables";
+
 .container {
-  display: flex;
+  @include center(space-around);
   width: 60%;
   padding: 10px 0;
-  justify-content: space-around;
   border-bottom: 1px solid rgb(223, 223, 223);
   border-radius: 10px;
-  align-items: center;
   & > span {
     &:first-child {
       width: 1.8rem;
@@ -34,9 +34,7 @@
       display: flex;
       justify-content: center;
       div {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        @include center(flex-start);
         margin-right: 10px;
         span {
           width: auto;

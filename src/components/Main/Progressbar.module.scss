@@ -2,9 +2,7 @@
 
 .dust {
   margin: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center;
   div {
     font-size: 1rem;
     &:nth-child(1) {

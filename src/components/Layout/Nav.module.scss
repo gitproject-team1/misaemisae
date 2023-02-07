@@ -1,13 +1,11 @@
 @import "../../variables";
 
 nav {
-  display: flex;
+  @include center;
   position: fixed;
   width: 100%;
   bottom: 0px;
   left: 0px;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   animation: fadeIn 0.5s ease-in-out;
   .container {
@@ -18,13 +16,11 @@ nav {
 }
 
 .arrow {
-  display: flex;
+  @include center;
   position: fixed;
   width: 100%;
   bottom: 20px;
   left: 0px;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   i {
     color: $color-sub2;
